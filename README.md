@@ -1,4 +1,4 @@
-Requirments - Your README.md includes a short description, install instructions, a contributors guide and a link to the license for your code
+# README
 
 **Description!**
 Welcome! Here is a Sinatra based web app that was created for Users to express how they feel about the Animes they have watched! Here Users will be able to create entries where they input the name, favorite character and their rating of the anime (scale 1-10)! This is usefull because many Anime watchers love to have their list of watched shows written down along with their rating so they can look back at it later and remember all the shows they have watched! This Web app is designed to do just that!
