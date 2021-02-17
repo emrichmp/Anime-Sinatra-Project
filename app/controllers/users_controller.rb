@@ -17,12 +17,24 @@ class UsersController < ApplicationController
             #tell user its invalid and redirect to /login page
         end
     end
-
+    #render sign up form
     get '/signup' do
-        #erb :signup
+        erb :signup
+    end
+
+    post '/users' do
+        #here we will create new user
+        #User to db
+        if params[:username] != "" && params[:password] != ""
+            @user = User.create(params)
+            redirect "users/#{@user.id}"
+        else
+
+        end
     end
 
     get '/users/:id' do
-        "This will be user show route"
+        @user = User.find_by(id: params[:id])
+        erb :show
     end
 end
