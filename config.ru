@@ -8,4 +8,5 @@ require './config/environment'
 use Rack::MethodOverride
 
 #will mount other controllers w/ 'use'
+use UsersController
 run ApplicationController
