@@ -1,4 +1,10 @@
 class AnimeEntriesController < ApplicationController
+
+    get '/anime_entries' do
+        @all_animes = Anime.all
+        erb :'anime_entries/index'
+    end
+
     #get anime_entries/new to render form to create animes
     get '/anime_entries/new' do
         erb :'/anime_entries/new'
