@@ -16,7 +16,10 @@ class AnimeEntriesController < ApplicationController
         end
     end
     #show route for a anime entry
-    
+    get '/anime_entries/:id' do
+        @anime = Anime.find(params[:id])
+        erb :'/anime_entries/show'
+    end
 
     #index route for all anime entries
     
