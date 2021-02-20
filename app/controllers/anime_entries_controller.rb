@@ -23,8 +23,32 @@ class AnimeEntriesController < ApplicationController
 
     #this route will send us to anime_entries./edi.erb which will render edit form
     get '/anime_entries/:id/edit' do
-        erb :'/anime_entries/edit'
+        @anime = Anime.find(params[:id])
+        if logged_in?
+            if @anime.user == current_user
+                erb :'/anime_entries/edit'
+            else
+                redirect "/"
+            end
+        else
+            redirect '/'
+        end
       end
+      
+    #This action finds and modifies anime entry
+    patch '/anime_entries/:id' do
+        @anime = Anime.find(params[:id])
+        if logged_in?
+            if @anime.user == current_user
+                @anime.update(name: params[:name], fav_character: params[:fav_character], rating: params[:rating])
+                redirect "/anime_entries/#{@anime.id}"
+            else
+                redirect '/'
+            end
+        else
+            redirect '/'
+        end
+    end
 
     #index route for all anime entries
     
