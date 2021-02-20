@@ -9,5 +9,5 @@ use Rack::MethodOverride
 
 #will mount other controllers w/ 'use'
 use UsersController
-use AllAnimesController
+use AnimeEntriesController
 run ApplicationController
