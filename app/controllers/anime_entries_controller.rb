@@ -21,6 +21,11 @@ class AnimeEntriesController < ApplicationController
         erb :'/anime_entries/show'
     end
 
+    #this route will send us to anime_entries./edi.erb which will render edit form
+    get '/anime_entries/:id/edit' do
+        erb :'/anime_entries/edit'
+      end
+
     #index route for all anime entries
     
 end
