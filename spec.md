@@ -18,7 +18,7 @@ Specs:
 - [X] Ensure that users can't modify content created by other users
     - Edit and Delete Buttons/links only show up if you are the user that owns that Anime entry
 - [X] Include user input validations
-    - Can't create a new user or new anime entry - redirects page
+    - Can't create a new user or new anime entry with empty text - redirects page
 - [ ] BONUS - not required - Display validation failures to user with error message (example form URL e.g. /posts/new)
 - [X] Your README.md includes a short description, install instructions, a contributors guide and a link to the license for your code
 
