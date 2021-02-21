@@ -45,7 +45,7 @@ class AnimeEntriesController < ApplicationController
     patch '/anime_entries/:id' do
         @anime = Anime.find(params[:id])
         if logged_in?
-            if @anime.user == current_user
+            if @anime.user == current_user && params[:name] != "" && params[:fav_character] != "" && params[:rating] != ""
                 @anime.update(name: params[:name], fav_character: params[:fav_character], rating: params[:rating])
                 redirect "/anime_entries/#{@anime.id}"
             else
@@ -56,8 +56,14 @@ class AnimeEntriesController < ApplicationController
         end
     end
 
-    get '/anime_entries/:id/delete' do
-        "Hello World"
+    delete '/anime_entries/:id' do
+        @anime = Anime.find(params[:id])
+        if logged_in? && @anime.user == current_user
+            @anime.destroy
+            redirect '/anime_entries'
+        else
+            redirect '/'
+        end
     end
     
 end
