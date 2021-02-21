@@ -10,11 +10,15 @@ class UsersController < ApplicationController
     #redirect user to their "home page"
     post '/login' do
         @user = User.find_by(username: params[:username])
-        if @user.authenticate(params[:password]) && params[:username] != "" && params[:password] != ""
-            session[:user_id] = @user.id
-            redirect "users/#{@user.id}"
+        if params[:username] != "" && params[:password] != ""
+            if @user.authenticate(params[:password])
+                session[:user_id] = @user.id
+                redirect "users/#{@user.id}"
+            else
+                #tell user its invalid and redirect to /login page
+                redirect '/login'
+            end
         else
-            #tell user its invalid and redirect to /login page
             redirect '/login'
         end
     end
