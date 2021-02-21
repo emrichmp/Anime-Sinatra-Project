@@ -1,5 +1,20 @@
-<h2><%= @user.username %>'s Show Page! </h2>
+<h2><%= @user.username %>'s Home Page! </h2>
 
-<h2> These are all of your animes! </h2>
+<h4> Use the links on top to... </h4>
+    <ol>
+        <li> - Create a New Anime Entry</li>
+        <li> - View All Anime Entries</li>
+        <li> - Logout</li>
+    </ol>
 
-<%= @user.animes.all %>
+    <br></br>
+
+<h4> These are your Anime's </h4>
+
+    <% @user.animes.each do |anime| %>
+        <b>ID:</b> <a href="/anime_entries/<%= anime.id %>"><%= anime.id %></a>
+        <b>Name: </b> <%= anime.name %>
+        <b>Favorite Character: </b> <%= anime.fav_character %>
+        <b>Rating: </b> <%= anime.rating %>
+        <br></br>
+    <% end %>
