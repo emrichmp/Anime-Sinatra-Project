@@ -56,6 +56,8 @@ class AnimeEntriesController < ApplicationController
         end
     end
 
-    #index route for all anime entries
+    get '/anime_entries/:id/delete' do
+        "Hello World"
+    end
     
 end

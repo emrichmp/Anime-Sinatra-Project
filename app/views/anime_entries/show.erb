@@ -4,6 +4,10 @@ SHOW ANIMES
 <p><%= @anime.fav_character %></p>
 <p><%= @anime.rating %></p> 
 
-<a href="/anime_entries/<%= @anime.id %>/edit"> Edit Entry </a>
+<% if current_user == @anime.user%>
 
-Delete link
+    <a href="/anime_entries/<%= @anime.id %>/edit"> Edit Entry </a>
+    <p></p>
+    <a href="/anime_entries/<%= @anime.id %>/delete"> Delete Entry </a>
+
+<% end %>
