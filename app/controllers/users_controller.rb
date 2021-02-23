@@ -44,7 +44,7 @@ class UsersController < ApplicationController
                 redirect '/signup'
             end
         else
-            flash[:message] = "This username already exists"
+            flash[:message] = "This username already exists."
             redirect '/signup'
         end
     end

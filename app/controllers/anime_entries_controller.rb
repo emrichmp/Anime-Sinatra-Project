@@ -14,10 +14,11 @@ class AnimeEntriesController < ApplicationController
         if !logged_in?
             redirect '/'
         end
-        if params[:name] != ""
+        if params[:name] != "" && params[:fav_character] != "" && params[:rating] != ""
             @anime = Anime.create(name: params[:name], fav_character: params[:fav_character], rating: params[:rating], user_id: current_user.id)
             redirect "/anime_entries/#{@anime.id}"
         else
+            flash[:message] = "Looks like you submitted a blank field! Try again!"
             redirect '/anime_entries/new'
         end
     end
@@ -49,7 +50,8 @@ class AnimeEntriesController < ApplicationController
                 @anime.update(name: params[:name], fav_character: params[:fav_character], rating: params[:rating])
                 redirect "/anime_entries/#{@anime.id}"
             else
-                redirect '/'
+                flash[:message] = "Looks like you submitted a blank field! Try again!"
+                redirect "/anime_entries/#{@anime.id}/edit"
             end
         else
             redirect '/'
