@@ -10,9 +10,9 @@ Specs:
 - [X] Include at least one has_many relationship on your User model (e.g. User has_many Posts)
     - User has_many Animes
 - [X] Include at least one belongs_to relationship on another model (e.g. Post belongs_to User)
-    - Animes belongs to User
+    - Animes belongs_to User
 - [X] Include user accounts with unique login attribute (username or email)
-    - User has a username to log in
+    - User has a username to log in. User cannot create a new user instance with a username that's already taken.
 - [X] Ensure that the belongs_to resource has routes for Creating, Reading, Updating and Destroying
     - User have full CRUD on their anime entries
 - [X] Ensure that users can't modify content created by other users
