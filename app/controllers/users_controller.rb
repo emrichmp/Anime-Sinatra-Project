@@ -30,7 +30,8 @@ class UsersController < ApplicationController
     post '/users' do
         #here we will create new user
         #User to db
-        if params[:username] != "" && params[:password] != ""
+        # @potential_user = User.find_by(username: params[:username])
+        # if params[:username] != "" && params[:password] != "" && params[:username] != @potential_user.username
             @user = User.create(params)
             session[:user_id] = @user.id
             redirect "users/#{@user.id}"
@@ -48,4 +49,11 @@ class UsersController < ApplicationController
         session.clear
         redirect '/'
     end
+
+    # helpers do
+    #     def valid_creation
+
+    #     end
+
+    # end
 end
