@@ -1,6 +1,7 @@
 class UsersController < ApplicationController
     #renders login page(form)
     get '/login' do
+        puts flash
         erb :login
     end
 
@@ -16,9 +17,11 @@ class UsersController < ApplicationController
                 redirect "users/#{@user.id}"
             else
                 #tell user its invalid and redirect to /login page
+                flash[:message] = "Your credentials were invalid. Please try to login again."
                 redirect '/login'
             end
         else
+            flash[:message] = "Your credentials were invalid. Please try to login again."
             redirect '/login'
         end
     end
@@ -32,15 +35,17 @@ class UsersController < ApplicationController
         #User to db
         @potential_user = User.find_by(username: params[:username])
         if @potential_user == nil
-            if params[:username] != "" && params[:password] != ""# && params[:username] != @potential_user.username
+            if params[:username] != "" && params[:password] != ""
                 @user = User.create(params)
                 session[:user_id] = @user.id
                 redirect "users/#{@user.id}"
             else
+                flash[:message] = "Your credentials were invalid."
                 redirect '/signup'
             end
         else
-            redirect '/'
+            flash[:message] = "This username already exists"
+            redirect '/signup'
         end
     end
 
@@ -53,11 +58,4 @@ class UsersController < ApplicationController
         session.clear
         redirect '/'
     end
-
-    # helpers do
-    #     def valid_creation
-
-    #     end
-
-    # end
 end
